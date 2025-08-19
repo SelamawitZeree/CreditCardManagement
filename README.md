@@ -1,1 +1,1 @@
-# CreditCardManagment
+# CreditCardManagement
