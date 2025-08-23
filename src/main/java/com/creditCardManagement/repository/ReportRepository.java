@@ -1,4 +1,9 @@
 package com.creditCardManagement.repository;
 
-public interface ReportRepository {
+import com.creditCardManagement.domain.Report;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ReportRepository extends JpaRepository<Report, Long> {
 }

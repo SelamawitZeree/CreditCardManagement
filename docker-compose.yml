@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   mysql:
-    image: mysql:latest
-    container_name: mysql
+    image: mysql:8.0
+    container_name: mysql_db
     restart: always
     environment:
       MYSQL_DATABASE: credit_card_db
@@ -16,12 +16,12 @@ services:
       - mysql_data:/var/lib/mysql  # Persistent storage
 
   app:
-    build: .  # Build Dockerfile in current directory
+    build: .  # Build Dockerfile in current directory ../../..
     container_name: credit-card-app
     ports:
       - "8080:8080"  # Exposes Spring Boot app to host
     depends_on:
-      - mysql  # Wait for MySQL to start
+      - mysql # Wait for MySQL to be actually ready
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/credit_card_db
       SPRING_DATASOURCE_USERNAME: admin
